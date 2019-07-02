@@ -1,12 +1,15 @@
 import { NextFunction, Request, Response } from 'express'
 import { rootTemplate } from '../templates/root'
+import { fetchData } from '../../modules/fetchData'
 
 export const getRoot = (
   _req: Request,
   res: Response,
-  _next: NextFunction
-): void => {
-  const initialData = { name: 'sjukka' }
-
-  res.send(rootTemplate(initialData))
-}
+  next: NextFunction
+): Promise<void> =>
+  fetchData()
+    .then(data => rootTemplate(data))
+    .then(html => {
+      res.send(html)
+    })
+    .catch(next)
