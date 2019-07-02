@@ -1,5 +1,11 @@
 import React from 'react'
 
-const App: React.FC = () => <div>Hello world!</div>
+export interface Props {
+  name: string
+}
+
+const App: React.FC<Props> = ({ name }) => {
+  return <div>Hello {name}!</div>
+}
 
 export default App

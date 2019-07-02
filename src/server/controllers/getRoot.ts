@@ -6,5 +6,7 @@ export const getRoot = (
   res: Response,
   _next: NextFunction
 ): void => {
-  res.send(rootTemplate())
+  const initialData = { name: 'sjukka' }
+
+  res.send(rootTemplate(initialData))
 }

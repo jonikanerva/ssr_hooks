@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { renderToString } from 'react-dom/server'
-import App from '../../client/components/App'
+import App, { Props } from '../../client/components/App'
 
-export const rootTemplate = (): string => `
+export const rootTemplate = (initialData: Props): string => `
   <!DOCTYPE html>
   <html lang="en">
   <head>
@@ -10,7 +10,10 @@ export const rootTemplate = (): string => `
     <meta charset="utf-8">
   </head>
   <body>
-    <div id="root">${renderToString(<App />)}</div>
+    <div id="root">${renderToString(<App {...initialData} />)}</div>
+    <script id="initialData" type="application/json">
+      ${JSON.stringify(initialData)}
+    </script>
     <script src="/bundle.js"></script>
   </body>
   </html>
