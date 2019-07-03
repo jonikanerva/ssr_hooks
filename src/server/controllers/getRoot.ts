@@ -8,7 +8,7 @@ export const getRoot = (
   next: NextFunction
 ): Promise<void> =>
   fetchData()
-    .then(data => rootTemplate({ url: req.url, ...data }))
+    .then(data => rootTemplate({ url: req.url, state: data }))
     .then(html => {
       res.send(html)
     })

@@ -1,33 +1,20 @@
 import React from 'react'
 import { Route, Switch, NavLink } from 'react-router-dom'
-import { InitialData } from '../../server/templates/root'
+import { AppState, AppProvider } from './AppContext'
 import Foo from './Foo'
 import Bar from './Bar'
 
-const App: React.FC<InitialData> = props => {
-  console.log('app props', props)
+const App: React.FC<AppState> = initialState => (
+  <AppProvider initialState={initialState}>
+    <div className="navigation">
+      <NavLink to="/foo">foo</NavLink>
+      <NavLink to="/bar">bar</NavLink>
+    </div>
+    <Switch>
+      <Route path="/foo" component={Foo} />
+      <Route path="/bar" component={Bar} />
+    </Switch>
+  </AppProvider>
+)
 
-  return (
-    <React.Fragment>
-      <div className="navigation">
-        <NavLink to="/foo">foo</NavLink>
-        <NavLink to="/bar">bar</NavLink>
-      </div>
-      <Switch>
-        <Route
-          path="/foo"
-          component={(routeProps: any) => (
-            <Foo url={props.url} {...routeProps} />
-          )}
-        />
-        <Route
-          path="/bar"
-          component={(routeProps: any) => (
-            <Bar url={props.url} {...routeProps} />
-          )}
-        />
-      </Switch>
-    </React.Fragment>
-  )
-}
 export default App

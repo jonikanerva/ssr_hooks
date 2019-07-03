@@ -1,14 +1,9 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+import { useGetInitialProps } from '../hooks/useGetInitialProps'
+import { fetchData } from '../../modules/fetchData'
 
-const Bar: React.FC<any> = props => {
-  const location = props.location.pathname
-  const url = props.url
-
-  useEffect(() => {
-    if (location !== url) {
-      console.log('haetaan bar')
-    }
-  }, [])
+const Bar: React.FC = () => {
+  useGetInitialProps(fetchData)
 
   return <div>Bar!</div>
 }
