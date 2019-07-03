@@ -1,1 +1,5 @@
-export const fetchData = () => Promise.resolve({ name: 'sjukka' })
+import uuid from 'uuid/v4'
+
+export const fetchData = () => {
+  return Promise.resolve({ name: uuid() })
+}
