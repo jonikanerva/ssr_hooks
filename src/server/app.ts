@@ -1,13 +1,13 @@
 import express, { Application } from 'express'
-import { getRoot } from './controllers/getRoot'
+import { getBar } from './controllers/getBar'
+import { getFoo } from './controllers/getFoo'
 
 const app: Application = express()
 
 app.disable('x-powered-by')
 
-app.get('/', getRoot)
-app.get('/foo', getRoot)
-app.get('/bar', getRoot)
+app.get('/foo', getFoo)
+app.get('/bar', getBar)
 app.use(express.static('build/public'))
 
 export { app }

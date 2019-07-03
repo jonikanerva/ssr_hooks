@@ -2,11 +2,12 @@ import * as React from 'react'
 import { useState, useContext, createContext } from 'react'
 
 interface State {
-  [key: string]: any
+  foo: any
+  bar: any
 }
 
 export interface AppState {
-  state: State
+  data: State
   url: string
 }
 
@@ -20,7 +21,10 @@ interface AppProviderProps {
   children: React.ReactNode
 }
 
-export const initialAppState: AppState = { state: {}, url: '/' }
+export const initialAppState: AppState = {
+  data: { foo: {}, bar: {} },
+  url: '/'
+}
 
 const defaultContextValue: ReactUseStateParams = [initialAppState, () => {}]
 const AppContext = createContext(defaultContextValue)

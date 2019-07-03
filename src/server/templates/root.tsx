@@ -17,9 +17,9 @@ export const rootTemplate = (initialData: AppState): string => `
         <App {...initialData} />
       </Router>
     )}</div>
-    <script id="initialData" type="application/json">
-      ${JSON.stringify(initialData)}
-    </script>
+    <script id="initialData" type="application/json">${JSON.stringify(
+      initialData
+    )}</script>
     <script src="/bundle.js"></script>
   </body>
   </html>
