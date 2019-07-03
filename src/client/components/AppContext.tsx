@@ -1,10 +1,12 @@
 import * as React from 'react'
 import { useState, useContext, createContext } from 'react'
 
+interface State {
+  [key: string]: any
+}
+
 export interface AppState {
-  state: {
-    [key: string]: any
-  }
+  state: State
   url: string
 }
 
