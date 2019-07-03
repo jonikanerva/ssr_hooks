@@ -1,7 +1,7 @@
-import express from 'express'
+import express, { Application } from 'express'
 import { getRoot } from './controllers/getRoot'
 
-const app: express.Application = express()
+const app: Application = express()
 
 app.disable('x-powered-by')
 
