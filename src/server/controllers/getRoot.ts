@@ -3,12 +3,12 @@ import { rootTemplate } from '../templates/root'
 import { fetchData } from '../../modules/fetchData'
 
 export const getRoot = (
-  _req: Request,
+  req: Request,
   res: Response,
   next: NextFunction
 ): Promise<void> =>
   fetchData()
-    .then(data => rootTemplate(data))
+    .then(data => rootTemplate({ url: req.url, ...data }))
     .then(html => {
       res.send(html)
     })

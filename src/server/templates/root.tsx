@@ -1,8 +1,14 @@
 import * as React from 'react'
 import { renderToString } from 'react-dom/server'
-import App, { Props } from '../../client/components/App'
+import { StaticRouter as Router } from 'react-router-dom'
+import App from '../../client/components/App'
 
-export const rootTemplate = (initialData: Props): string => `
+export interface InitialData {
+  name: string
+  url: string
+}
+
+export const rootTemplate = (initialData: InitialData): string => `
   <!DOCTYPE html>
   <html lang="en">
   <head>
@@ -10,7 +16,11 @@ export const rootTemplate = (initialData: Props): string => `
     <meta charset="utf-8">
   </head>
   <body>
-    <div id="root">${renderToString(<App {...initialData} />)}</div>
+    <div id="root">${renderToString(
+      <Router location={initialData.url}>
+        <App {...initialData} />
+      </Router>
+    )}</div>
     <script id="initialData" type="application/json">
       ${JSON.stringify(initialData)}
     </script>
