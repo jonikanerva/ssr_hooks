@@ -9,7 +9,7 @@ export const getBar = (
 ): Promise<void> =>
   fetchData()
     .then(response =>
-      rootTemplate({ url: req.url, data: { bar: response, foo: {} } })
+      rootTemplate({ url: req.route.path, data: { bar: response, foo: {} } })
     )
     .then(html => {
       res.send(html)
