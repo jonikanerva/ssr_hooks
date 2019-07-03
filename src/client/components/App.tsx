@@ -14,8 +14,18 @@ const App: React.FC<InitialData> = props => {
         <NavLink to="/bar">bar</NavLink>
       </div>
       <Switch>
-        <Route path="/foo" render={() => <Foo />} />
-        <Route path="/bar" render={() => <Bar />} />
+        <Route
+          path="/foo"
+          component={(routeProps: any) => (
+            <Foo url={props.url} {...routeProps} />
+          )}
+        />
+        <Route
+          path="/bar"
+          component={(routeProps: any) => (
+            <Bar url={props.url} {...routeProps} />
+          )}
+        />
       </Switch>
     </React.Fragment>
   )
